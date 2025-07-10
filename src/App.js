@@ -4,10 +4,12 @@ import { getFirestore, collection, onSnapshot, addDoc } from 'firebase/firestore
 import { getAuth } from 'firebase/auth';
 import { initializeApp } from 'firebase/app';
 import PinPopup from './PinPopup';
-import 'dotenv/config';
+
+console.log("API Key:", process.env.REACT_APP_FIREBASE_API_KEY);
+console.log("API Key:", process.env.REACT_APP_GOOGLE_API_KEY);
 
 const firebaseConfig = {   
-  apiKey: "AIzaSyDmzNPl4AH6uMUdXDjjl7NTW2-5xteqjg8",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "husky-map.firebaseapp.com",
   projectId: "husky-map",
   storageBucket: "husky-map.firebasestorage.app",
@@ -40,7 +42,7 @@ useEffect(() => {
 // };
 
 return (
-  <APIProvider apiKey={"process.env.GOOGLE_API_KEY"}>
+  <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
         <Map center={{ lat: 47.6, lng: -122.3 }} zoom={12}
           style={{width:'100vw',height:'100vh'}}>
     {/* <Map center={{ lat: 47.6, lng: -122.3 }} zoom={12}
